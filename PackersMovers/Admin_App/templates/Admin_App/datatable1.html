@@ -1,0 +1,166 @@
+{% extends 'Admin_App/base.html' %}
+
+
+{% block content %}
+<!-- Export Datatable start -->
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="title">
+							<h4>Within City Bookings</h4>
+						</div>
+						<nav aria-label="breadcrumb" role="navigation">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Within City Bookings</li>
+							</ol>
+						</nav>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="card-box mb-30">
+
+				<div class="pd-20">
+					<h4 class="text-blue h4">Export Data</h4>
+				</div>
+				<div class="pb-20">
+
+					<table class="table hover data-table-export wrap" id="clickableTable"
+						style="padding-right: 0.5rem;">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Contact</th>
+								<th>Email</th>
+								<th>Inquiry Date</th>
+								<th>Status</th>
+								<th>Booked Date</th>
+								<th>Service</th>
+								<th>Location</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for booking in bookings %}
+							<tr data-toggle="modal" data-target="#bd-example-modal-lg"
+								data-href="{% url 'Admin_App:get_booking' %}?specific_booking_id={{ booking.id }}">
+
+								<td>{{ booking.name }}</td>
+								<td>{{ booking.phone }}</td>
+								<td>{{ booking.email }}</td>
+								<td>{{ booking.dateofinquiry }}</td>
+								<td
+									style="color: {% if booking.status.lower == 'pending' %}red{% elif booking.status.lower == 'booked' %}green{% else %}grey{% endif %};">
+									{{ booking.status }}</td>
+								<td>{{ booking.orderbookeddate }}</td>
+								<td>{{ booking.services }}</td>
+								<td>{{ booking.location_city }}</td>
+
+
+
+							</tr>
+
+							{% endfor %}
+						</tbody>
+
+					</table>
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 col-sm-12 mb-30">
+
+			<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog"
+				aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header align-items-center">
+							<h4 class="modal-title" id="unameLabel"></h4>
+
+							<div class="right-closebtn d-flex justify-content-between align-items-baseline"
+								style="width: 10rem;">
+								<h6 class="modal-title" id="dateLabel"></h6>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+						</div>
+						<div class="modal-body">
+							<div class="row justify-content-between">
+								<ul style="margin-left: 0.7rem;margin-bottom: 1rem;">
+									<li style="margin-bottom: 0.5rem;"><img src="/static/images/address-book-30.png">
+										<span id="uemailLabel"></span>
+									</li>
+									<li><img src="/static/images/phone-30.png"> <span id="uphoneLabel"></span></li>
+
+								</ul>
+								<ul class="rightul" style="margin-right: 0.7rem;margin-bottom: 1rem;text-align: end">
+									<li style="margin-bottom: 0.5rem;"><span id="locationLabel"></span> <img
+											src="/static/images/location-30.png"></li>
+									<li><span id="servicesLabel"></span> <img src="/static/images/service-30.png"></li>
+
+								</ul>
+
+							</div>
+							<div class="row">
+
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Origin Address:</h5>
+											<p class="card-text" id="originAddress"></p>
+
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Destination Address:</h5>
+											<p class="card-text" id="destinationAddress"></p>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="modal-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- Export Datatable End -->
+{% endblock %}
+
+{% block javascript %}
+
+<script src="/static/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/static/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/static/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="/static/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="/static/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="/static/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="/static/src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="/static/src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="/static/src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="/static/src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="/static/src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
+<script src="/static/vendors/scripts/datatable-setting.js"></script>
+
+
+{% endblock %}

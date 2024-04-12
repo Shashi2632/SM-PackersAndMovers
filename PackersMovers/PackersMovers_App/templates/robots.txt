@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/  # Disallow crawling of the admin interface
+Disallow: /admin-login/  # Disallow crawling of the admin interface
+Disallow: /update-inquiry/  # Disallow crawling of the update inquiry view
+Disallow: /within_city_booking/  # Disallow crawling of the thank you page
+Disallow: /between_cities_booking/  # Disallow crawling of the thank you page
+
+Sitemap: https://www.yourdomain.com/sitemap.xml  # Include the URL to your sitemap.xml file

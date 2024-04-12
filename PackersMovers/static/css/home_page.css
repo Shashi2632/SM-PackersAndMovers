@@ -1,0 +1,90 @@
+/* Media query for smartphones */
+@media (max-width: 576px) {
+    .form-label {
+        font-size: 14px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .pcheckform {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 80%;
+        background-color: #dbebff69;
+        padding: 10px;
+        padding-inline: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+        margin-right: 3rem;
+        border-radius: 5px;
+    }
+
+
+
+}
+
+@media (max-width: 768px) {
+    .hero_area .pcheckform {
+        margin-left: 1rem !important;
+        margin-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 93%;
+    }
+
+    .pcheckform #nav-tab{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .hero_area .nav-tabs {
+        flex-direction: column;
+    }
+
+    .hero_area .nav-tabs .nav-link {
+        text-align: center;
+    }
+
+    form .col-6{
+        flex: none !important;
+        max-width: none !important;
+    }
+
+}
+
+#origin-map {
+    display: none;
+    width: 50%;
+    height: 500px;
+    background-color: #ffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+}
+
+
+
+.pcheckform {
+    transition: opacity 0.3s ease;
+}
+
+.dismiss-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 0 0 0 5px;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button is above the content */
+}
